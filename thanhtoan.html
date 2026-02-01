@@ -100,16 +100,16 @@
 <body>
 
     <div class="pay-card">
-        <h2 style="margin-bottom: 20px; font-size: 1.2rem; color: #fff;">Thông Tin Thanh Toán</h2>
+        <h2 style="margin-bottom: 20px; font-size: 1.2rem; color: #fff;">Thông Tin Thanh Toán </h2>
 
         <div class="qr-container">
-            <img src="Thanh Toán/img/qrthanhtoan.png" alt="QR Code" class="qr-image">
+            <img src="Thanh Toán/img/tpbank.png" alt="QR Code" class="qr-image">
         </div>
 
         <div class="pay-details">
             <div class="pay-item">
                 <span class="label">Ngân hàng</span>
-                <span class="value">MB BANK</span>
+                <span class="value">TP BANK</span>
             </div>
             <div class="pay-item">
                 <span class="label">Chủ tài khoản</span>
@@ -117,9 +117,36 @@
             </div>
             <div class="pay-item">
                 <span class="label">Số tài khoản</span>
-                <span class="value highlighted" id="stk">0948877241</span>
+                <span class="value highlighted" id="stk">1705 2009 219</span>
             </div>
         </div>
+         <button class="button" onclick="copySTK()" style="width: 100%; border: none;">
+     <span><i class="fa-regular fa-copy"></i> Sao chép số tài khoản</span>
+ </button>
+    
+
+<hr><br>
+   <h2 style="margin-bottom: 20px; font-size: 1.2rem; color: #fff;">Thông Tin Thanh Toán </h2>
+
+ <div class="qr-container">
+     <img src="Thanh Toán/img/mbbank.png" alt="QR Code" class="qr-image">
+ </div>
+ 
+ <div class="pay-details">
+     <div class="pay-item">
+         <span class="label">Ngân hàng</span>
+         <span class="value">MB BANK</span>
+     </div>
+     <div class="pay-item">
+         <span class="label">Chủ tài khoản</span>
+         <span class="value">ĐÀM TRỌNG NGHĨA</span>
+     </div>
+     <div class="pay-item">
+         <span class="label">Số tài khoản</span>
+         <span class="value highlighted" id="stk">0948877241</span>
+     </div>
+ </div>
+
 
         <button class="button" onclick="copySTK()" style="width: 100%; border: none;">
             <span><i class="fa-regular fa-copy"></i> Sao chép số tài khoản</span>
@@ -130,6 +157,15 @@
         </a>
     </div>
 
+
+
+
+
+  
+  
+  
+  
+  
     <script>
         function copySTK() {
             const stk = document.getElementById('stk').innerText;
