@@ -535,3 +535,32 @@ body {
     -webkit-line-clamp: unset !important; 
     overflow: visible !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Container chứa 2 nút */
+.links-container.dual-buttons {
+    display: flex;            /* Kích hoạt Flexbox */
+    flex-direction: row;      /* Ép các phần tử nằm trên 1 hàng */
+    gap: 10px;                /* Khoảng cách giữa 2 nút */
+    width: 100%;              /* Đảm bảo container chiếm hết chiều ngang */
+}
+
+/* Tinh chỉnh lại class btn-link để chia đôi không gian */
+.links-container.dual-buttons .btn-link {
+    flex: 1;                  /* Mỗi nút chiếm 50% chiều ngang của hàng */
+    padding: 12px 5px;        /* Giảm padding ngang một chút để chữ không bị tràn trên màn hình nhỏ */
+    font-size: 13px;          /* Cân đối lại kích thước chữ */
+    white-space: nowrap;      /* Ngăn chữ bị xuống dòng bên trong nút */
+    text-overflow: ellipsis;  /* Nếu chữ quá dài sẽ hiển thị dấu ... */
+    overflow: hidden;
+}
