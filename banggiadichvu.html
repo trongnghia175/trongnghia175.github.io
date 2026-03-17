@@ -3,369 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Báo Giá Dịch Vụ</title>
+    <title>Bảng Giá Dịch Vụ - Cute Style</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
-            --primary: #38bdf8;
-            --accent: #fbbf24;
-            --text-main: #f1f5f9;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --hover: #2d3748;
+            --bg: #f0f2f5;
+            --card-bg: #ffffff;
+            --primary: #74b9ff;
+            --accent: #ff7675;
+            --text: #2d3436;
+            --cat-bg: #fab1a0;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 2rem;
+            font-family: 'Comfortaa', cursive;
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 700px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 30px;
         }
 
         header h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .price-wrapper {
-            background: var(--bg-card);
-            border-radius: 1.5rem;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            padding: 1.5rem;
-            color: var(--primary);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1rem;
-            border-bottom: 2px solid var(--border);
-            text-align: left;
-        }
-
-        td {
-            padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        /* --- BANNER --- */
-        .banner-row td {
-            padding: 0; 
-            border: none;
-        }
-
-        .banner-img {
-            width: 100%;
-            aspect-ratio: 19 / 6; 
-            object-fit: cover;   
-            display: block;
-        }
-
-        /* --- TIÊU ĐỀ NHÓM CĂN GIỮA --- */
-        .cat-title {
-            background: rgba(255, 255, 255, 0.05);
-            font-weight: 700;
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .cat-title td {
-            text-align: center !important; /* Luôn ở giữa trên desktop */
-            padding: 1rem;
+        .service-group {
+            background: var(--card-bg);
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            overflow: hidden;
+            border: 2px solid #ffeaa7;
         }
 
-        /* Tạo khoảng cách giữa các nhóm bằng một hàng trống */
-        .spacer {
-            height: 30px;
-            background: var(--bg-body);
+        .group-header {
+            background: var(--cat-bg);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
 
-        .price-val {
-            font-family: 'Courier New', monospace;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.2rem;
+        .item {
+            display: grid;
+            grid-template-columns: 2fr 1.5fr 1fr;
+            padding: 15px;
+            border-bottom: 1px dashed #dfe6e9;
+            align-items: center;
+            font-size: 0.9rem;
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            body { padding: 1rem; }
-            thead { display: none; }
-            tr { display: block; border-bottom: 1px solid var(--border); }
-            
-            /* Dòng dữ liệu thường */
-            tr:not(.cat-title):not(.banner-row):not(.spacer) td {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.8rem 1rem;
-                border: none;
+        .item:last-child { border-bottom: none; }
+
+        .item-name { font-weight: 700; color: #636e72; }
+        .item-unit { color: var(--primary); font-size: 0.8rem; text-align: center; }
+        .item-price { 
+            color: var(--accent); 
+            font-weight: 700; 
+            text-align: right;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 500px) {
+            .item {
+                grid-template-columns: 1fr;
+                gap: 5px;
+                text-align: center;
             }
-
-            td::before { 
-                content: attr(data-label); 
-                color: var(--text-muted); 
-                font-size: 0.8rem; 
-                font-weight: normal;
-            }
-
-            /* Tiêu đề nhóm trên mobile */
-            .cat-title {
-                display: block;
-            }
-            .cat-title td {
-                display: block;
-                width: 100%;
-                text-align: center !important;
-            }
-            .cat-title td::before { display: none; }
-
-            .banner-row td::before { display: none; }
+            .item-unit, .item-price { text-align: center; }
+            header h1 { font-size: 1.4rem; }
         }
-
-        tr:hover:not(.cat-title):not(.banner-row):not(.spacer) { background: var(--hover); }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>BÁO GIÁ DỊCH VỤ</h1>
+        <h1>🌸 BÁO GIÁ DỊCH VỤ 🌸</h1>
     </header>
 
-    <div class="price-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Hạng mục dịch vụ</th>
-                    <th>Đơn vị</th>
-                    <th>Đơn giá</th>
-                </tr>
-            </thead>
-            <tbody>
-               
-                </tr>
-                <tr class="cat-title">
-                    <td colspan="3">Phát triển Website</td>
-                </tr>
-                <tr>
-                    <td data-label="Dịch vụ">Làm Bio, Profile, in4</td>
-                    <td data-label="Đơn vị">Gói Vĩnh Viễn</td>
-                    <td data-label="Đơn giá" class="price-val">10.000vnd</td>
-                </tr>
-                <tr>
-                    <td data-label="Dịch vụ">Web Random, Vòng Quay,...</td>
-                    <td data-label="Đơn vị">Gói Vĩnh Viễn</td>
-                    <td data-label="Đơn giá" class="price-val">15.000vnd</td>
-                </tr>
-                   <tr>
-     <td data-label="Dịch vụ">Web kỷ niệm, tỏ tình, birthday,...</td>
-     <td data-label="Đơn vị">Gói Vĩnh Viễn</td>
-     <td data-label="Đơn giá" class="price-val">19.000vnd</td>
-   </tr>
+    <div class="service-group">
+        <div class="group-header">Phát triển Website</div>
+        <div class="item">
+            <div class="item-name">Làm Bio, Profile, in4</div>
+            <div class="item-unit">Gói Vĩnh Viễn</div>
+            <div class="item-price">10.000đ</div>
+        </div>
+        <div class="item">
+            <div class="item-name">Web Random, Vòng Quay,...</div>
+            <div class="item-unit">Gói Vĩnh Viễn</div>
+            <div class="item-price">15.000đ</div>
+        </div>
+        <div class="item">
+            <div class="item-name">Web kỷ niệm, tỏ tình, birthday,...</div>
+            <div class="item-unit">Gói Vĩnh Viễn</div>
+            <div class="item-price">19.000đ</div>
+        </div>
+    </div>
 
-                <tr class="spacer"><td colspan="3"></td></tr>
+    <div class="service-group">
+        <div class="group-header">Pet Simulator (Roblox)</div>
+        <div class="item">
+            <div class="item-name">Huge Nor</div>
+            <div class="item-unit">2 Pet</div>
+            <div class="item-price">1.000đ</div>
+        </div>
+        <div class="item">
+            <div class="item-name">Gems</div>
+            <div class="item-unit">10M Gems</div>
+            <div class="item-price">1.000đ</div>
+        </div>
+    </div>
 
-                
-                <tr class="cat-title">
-                    <td colspan="3">Pet Simulator (Roblox)</td>
-                </tr>
-                <tr>
-                    <td data-label="Dịch vụ">Huge Nor</td>
-                    <td data-label="Đơn vị">2 Pet</td>
-                    <td data-label="Đơn giá" class="price-val">1.000vnd</td>
-                </tr>
-                <tr>
-  <td data-label="Dịch vụ">Gems</td>
-  <td data-label="Đơn vị">10M Gems</td>
-  <td data-label="Đơn giá" class="price-val">1.000vnd</td>
-</tr><tr class="spacer"><td colspan="3"></td></tr>
+    <div class="service-group" style="border-color: #74b9ff;">
+        <div class="group-header" style="background: #74b9ff;">Dịch Vụ Facebook</div>
+        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Theo Dõi</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Cảm Xúc Bài Viết</div><div class="item-unit">100 Cảm Xúc</div><div class="item-price">2.000đ</div></div>
+        <div class="item"><div class="item-name">Lên Tick Xanh Không Bảo Hành</div><div class="item-unit">Chính Chủ</div><div class="item-price">1.500.000đ</div></div>
+        <div class="item"><div class="item-name">Tick Xanh Có Bảo Hành</div><div class="item-unit">Chính Chủ</div><div class="item-price">2.200.000đ</div></div>
+        <div class="item"><div class="item-name">Mở Khoá Die 180 Day</div><div class="item-unit">Có/Không mail</div><div class="item-price">450k-750k</div></div>
+        <div class="item"><div class="item-name">Khoá tài khoản FB thường</div><div class="item-unit">15p-72h</div><div class="item-price">350.000đ</div></div>
+        <div class="item"><div class="item-name">Khoá Tài Khoản Chuyên Nghiệp</div><div class="item-unit">15p-72h</div><div class="item-price">432.000đ</div></div>
+        <div class="item"><div class="item-name">Khoá FanPage</div><div class="item-unit">15p-72h</div><div class="item-price">567.000đ</div></div>
+    </div>
 
+    <div class="service-group" style="border-color: #a29bfe;">
+        <div class="group-header" style="background: #a29bfe;">Dịch Vụ TikTok</div>
+        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Theo Dõi</div><div class="item-price">3.000đ</div></div>
+        <div class="item"><div class="item-name">Like Bài Viết</div><div class="item-unit">200 Like</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Điểm PK</div><div class="item-unit">100 Điểm PK</div><div class="item-price">2.000đ</div></div>
+        <div class="item"><div class="item-name">View Video</div><div class="item-unit">2000 View</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Mở khoá 13 tuổi</div><div class="item-unit">15p-72h</div><div class="item-price">300.000đ</div></div>
+    </div>
 
+    <div class="service-group" style="border-color: #55efc4;">
+        <div class="group-header" style="background: #55efc4;">Giao Dịch Trung Gian</div>
+        <div class="item"><div class="item-name">Kèo 1-49k</div><div class="item-unit">1 đơn</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Kèo 50-199k</div><div class="item-unit">1 đơn</div><div class="item-price">2.000đ</div></div>
+        <div class="item"><div class="item-name">Kèo 200-499k</div><div class="item-unit">1 đơn</div><div class="item-price">5.000đ</div></div>
+        <div class="item"><div class="item-name">Kèo 500k+</div><div class="item-unit">1 đơn</div><div class="item-price">1%</div></div>
+    </div>
 
+    <div class="service-group" style="border-color: #ffeaa7;">
+        <div class="group-header" style="background: #fdcb6e;">Robux (Roblox)</div>
+        <div class="item"><div class="item-name">40 robux</div><div class="item-unit">1 đơn</div><div class="item-price">18.000đ</div></div>
+        <div class="item"><div class="item-name">80 robux</div><div class="item-unit">1 đơn</div><div class="item-price">30.000đ</div></div>
+        <div class="item"><div class="item-name">500 robux</div><div class="item-unit">1 đơn</div><div class="item-price">170.000đ</div></div>
+        <div class="item"><div class="item-name">1.000 robux</div><div class="item-unit">1 đơn</div><div class="item-price">320.000đ</div></div>
+    </div>
 
-
-
-
-
-                <tr class="cat-title">
-                  <td colspan="3">Dịch Vụ Facebook</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">Theo Dõi TCN</td>
-                  <td data-label="Đơn vị">100 Theo Dõi</td>
-                  <td data-label="Đơn giá" class="price-val">1.000vnd</td>
-                </tr>
-                 <tr>
-   <td data-label="Dịch vụ">Cảm Xúc Bài Viết</td>
-   <td data-label="Đơn vị">100 Cảm Xúc</td>
-   <td data-label="Đơn giá" class="price-val">2.000vnd</td>
- </tr><tr class="spacer"><td colspan="3"></td></tr>
- 
- 
- 
- 
-                 <tr class="cat-title">
-                  <td colspan="3">Dịch Vụ TikTok</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">Theo Dõi TCN</td>
-                  <td data-label="Đơn vị">100 Theo Dõi</td>
-                  <td data-label="Đơn giá" class="price-val">3.000vnd</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">Like Bài Viết</td>
-                  <td data-label="Đơn vị">200 Like</td>
-                  <td data-label="Đơn giá" class="price-val">1.000vnd</td></tr>
-                   <td data-label="Dịch vụ">Điểm PK</td>
- <td data-label="Đơn vị">100 Điểm PK</td>
- <td data-label="Đơn giá" class="price-val">2.000vnd</td>
-                </tr>
-                 <tr>
-                  <td data-label="Dịch vụ">View Video</td>
-                  <td data-label="Đơn vị">2000 View</td>
-                  <td data-label="Đơn giá" class="price-val">1.000vnd</td></tr><tr class="spacer"><td colspan="3"></td></tr>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                   <tr class="cat-title">
-                  <td colspan="3">Giao Dịch Trung Gian</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">Kèo 1-49k</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">1.000vnd</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">Kèo 50-199k</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">2.000vnd</td></tr>
-                   <td data-label="Dịch vụ">Kèo 200-499k</td>
- <td data-label="Đơn vị">1 đơn</td>
- <td data-label="Đơn giá" class="price-val">5.000vnd</td>
-  <tr>
-      
-                  <td data-label="Dịch vụ">Kèo 500k+</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">1%</td></tr>
-                </tr><tr class="spacer"><td colspan="3"></td></tr>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                                   <tr class="cat-title">
-                  <td colspan="3">Robux (Roblox)</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">40 rb</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">18.000vnd</td>
-                </tr>
-                <tr>
-                  <td data-label="Dịch vụ">80 rb</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">30.000vnd</td></tr>
-                   <td data-label="Dịch vụ">500 rb</td>
- <td data-label="Đơn vị">1 đơn</td>
- <td data-label="Đơn giá" class="price-val">170.000vnd</td>
- <tr>
-                  <td data-label="Dịch vụ">1.000 rb</td>
-                  <td data-label="Đơn vị">1 đơn</td>
-                  <td data-label="Đơn giá" class="price-val">320.000vnd</td></tr>
-                </tr><tr class="spacer"><td colspan="3"></td></tr>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                                 <tr class="cat-title">
-                  <td colspan="3">Premium App</td>
-                </tr>
-                
-                <tr>
-                  <td data-label="Dịch vụ">Locket Gold Android</td>
-                  <td data-label="Đơn vị">Vĩnh Viễn</td>
-                  <td data-label="Đơn giá" class="price-val">10.000vnd</td>
-                </tr>
-                                <tr>
-                  <td data-label="Dịch vụ">Locket Gold IOS</td>
-                  <td data-label="Đơn vị">Vĩnh Viễn</td>
-                  <td data-label="Đơn giá" class="price-val">25.000vnd</td>
-                </tr>
-                                <tr>
-                  <td data-label="Dịch vụ">Picsart Gold IOS</td>
-                  <td data-label="Đơn vị">Vĩnh Viễn</td>
-                  <td data-label="Đơn giá" class="price-val">25.000vnd</td>
-                </tr>
-                
-               
-               
-               
-               
-               
-               
-                </tr><tr class="spacer"><td colspan="3"></td></tr>
-                
-                
-                
-                
-                
-                
-                
-            </tbody>
-        </table>
+    <div class="service-group" style="border-color: #ff7675;">
+        <div class="group-header" style="background: #ff7675;">Premium App</div>
+        <div class="item"><div class="item-name">Locket Gold Android</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">10.000đ</div></div>
+        <div class="item"><div class="item-name">Locket Gold IOS</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">25.000đ</div></div>
+        <div class="item"><div class="item-name">Picsart Gold IOS</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">25.000đ</div></div>
+        <div class="item"><div class="item-name">CapCut Pro (bảo hành)</div><div class="item-unit">1 Tháng</div><div class="item-price">45.000đ</div></div>
+        <div class="item"><div class="item-name">CapCut Pro (kbh)</div><div class="item-unit">1 Tháng</div><div class="item-price">21.000đ</div></div>
+        <div class="item"><div class="item-name">Chat GPT Plus</div><div class="item-unit">1 Tháng (bảo hành)</div><div class="item-price">100.000đ</div></div>
+        <div class="item"><div class="item-name">Chat GPT Plus</div><div class="item-unit">1 Tháng (kbh)</div><div class="item-price">50.000đ</div></div>
+        <div class="item"><div class="item-name">Canva Pro</div><div class="item-unit">1 Tháng</div><div class="item-price">20.000đ</div></div>
+        <div class="item"><div class="item-name">Canva Pro</div><div class="item-unit">6 Tháng</div><div class="item-price">60.000đ</div></div>
+        <div class="item"><div class="item-name">Gemini Pro + GG 2TB</div><div class="item-unit">1 Năm</div><div class="item-price">100.000đ</div></div>
     </div>
 </div>
 
