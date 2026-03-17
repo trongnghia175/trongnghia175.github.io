@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng Giá Dịch Vụ - Cute Style</title>
+    <title>Bảng Giá Dịch Vụ - Tối Ưu Độ Đậm</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #f0f2f5;
             --card-bg: #ffffff;
-            --primary: #74b9ff;
-            --accent: #ff7675;
-            --text: #2d3436;
+            --text-black: #000000;
+            --deep-blue: #000080; /* Màu xanh nước biển cực đậm (Navy) */
+            --price-red: #d63031; 
             --cat-bg: #fab1a0;
         }
 
@@ -20,7 +20,7 @@
         body {
             font-family: 'Comfortaa', cursive;
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-black);
             padding: 20px;
             display: flex;
             justify-content: center;
@@ -33,12 +33,13 @@
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
 
         header h1 {
-            color: var(--accent);
-            font-size: 1.8rem;
+            color: var(--text-black);
+            font-size: 2.5rem;
+            font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -54,11 +55,12 @@
 
         .group-header {
             background: var(--cat-bg);
-            color: white;
+            color: #000000; /* Đen đậm thật đậm */
             padding: 15px;
             text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 900; /* Độ đậm tối đa */
+            font-size: 1.3rem;
+            text-transform: uppercase;
         }
 
         .item {
@@ -67,21 +69,28 @@
             padding: 15px;
             border-bottom: 1px dashed #dfe6e9;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .item:last-child { border-bottom: none; }
 
-        .item-name { font-weight: 700; color: #636e72; }
-        .item-unit { color: var(--primary); font-size: 0.8rem; text-align: center; }
-        .item-price { 
-            color: var(--accent); 
-            font-weight: 700; 
-            text-align: right;
-            font-family: 'Segoe UI', sans-serif;
+        .item-name { font-weight: 700; color: var(--text-black); }
+        
+        .item-unit { 
+            color: var(--deep-blue); /* Xanh nước biển đậm thật đậm */
+            font-size: 0.85rem; 
+            text-align: center; 
+            font-weight: 800; /* Tăng độ đậm cho đơn vị */
         }
 
-        /* Responsive cho điện thoại */
+        .item-price { 
+            color: var(--price-red);
+            font-weight: 800; 
+            text-align: right;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+        }
+
         @media (max-width: 500px) {
             .item {
                 grid-template-columns: 1fr;
@@ -89,7 +98,7 @@
                 text-align: center;
             }
             .item-unit, .item-price { text-align: center; }
-            header h1 { font-size: 1.4rem; }
+            header h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -97,7 +106,7 @@
 
 <div class="container">
     <header>
-        <h1>🌸 BÁO GIÁ DỊCH VỤ 🌸</h1>
+        <h1>🌸 GIÁ DỊCH VỤ 🌸</h1>
     </header>
 
     <div class="service-group">
