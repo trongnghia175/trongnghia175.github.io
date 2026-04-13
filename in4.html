@@ -3,25 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTCN</title>
+    <title>Thông Tin Trọng Nghĩa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* CSS NÂNG CẤP - PHONG CÁCH HIỆN ĐẠI */
         :root {
-            --bg-dark: #0b1120;
-            --card-dark: #161f32;
-            --text-main: #f8fafc;
-            --text-gray: #94a3b8;
-            --accent-blue: #3b82f6;
-            --btn-bg: #1e293b;
+            --bg-color: #05070a;
+            --accent-blue: #00d2ff;
+            --accent-purple: #9d50bb;
+            --card-bg: rgba(22, 31, 50, 0.8);
+            --text-color: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(157, 80, 187, 0.15) 0, transparent 50%);
+            color: var(--text-color);
             margin: 0;
             display: flex;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             padding: 20px;
         }
 
@@ -30,129 +35,149 @@
             max-width: 450px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
         }
 
+        /* Card Avatar & Tên */
         .card {
-            background-color: var(--card-dark);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #1e293b;
-            padding: 25px;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 40px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Avatar tròn phía trên cùng */
-        .profile-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.3;
         }
 
         .avatar-circle {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 3px solid #334155;
-            margin-bottom: 15px;
-            object-fit: cover;
+            border: 3px solid var(--accent-blue);
+            padding: 5px;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
         }
 
-        .display-name { font-size: 24px; font-weight: bold; margin: 0; }
-        .sub-text { color: var(--text-gray); font-size: 13px; margin: 8px 0; font-style: italic; }
-        
-        .price-link {
-            color: #a855f7;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
+        .avatar-circle:hover {
+            transform: rotate(5deg) scale(1.05);
         }
 
-        /* Link Buttons */
+        .display-name {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 10px 0;
+            background: linear-gradient(to right, #00d2ff, #9d50bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sub-text {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        /* Danh sách Link */
         .links-container {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 25px;
+            width: 100%;
         }
 
         .btn-link {
-            background: var(--btn-bg);
-            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border-radius: 15px;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
-            font-size: 15px;
-            border: 1px solid #334155;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(30, 41, 59, 0.5);
+            position: relative;
         }
 
-        .btn-link:hover {
-            background: #334155;
-            transform: translateY(-2px);
-        }
-
-        /* Nút đặc biệt có viền màu (Trang MMO) */
+        /* Hiệu ứng Gradient đặc biệt cho từng nút */
         .btn-gradient {
-            border: 2px solid transparent;
-            background-image: linear-gradient(var(--btn-bg), var(--btn-bg)), 
-                              linear-gradient(to right, #22c55e, #ec4899);
-            background-origin: border-box;
-            background-clip: padding-box, border-box;
+            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
         }
 
-        /* Footer Info */
-        .contact-info {
-            margin-top: 30px;
-            font-size: 13px;
-            color: var(--text-gray);
-            line-height: 1.8;
+        .btn-gradient:hover {
+            background: linear-gradient(90deg, #00d2ff 0%, #3b82f6 100%);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
         }
 
-        .contact-info a { color: var(--accent-blue); text-decoration: none; }
-        .display-name {
-    font-size: 32px; /* Độ to của chữ */
-    font-weight: 700; /* Độ đậm */
-    color: #ffffff; /* Màu trắng */
-    text-align: center; /* Căn giữa */
-    margin: 20px 0; /* Khoảng cách trên dưới */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+        /* Footer chữ nhỏ */
+        .footer-credit {
+            font-size: 11px;
+            color: #4b5563;
+            text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
 
     </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-        <div class="profile-header">
-            <img src="profile/css/img/avt.png" alt="Avatar" class="avatar-circle">
-            
-            <h1 class="display-name">Trọng Nghĩa</h1>
-            
-            <p class="sub-text">Dưới đây là các thông tin mạng xã hội của Admin</p>
-            
-            
+
+    <div class="container">
+        <div class="card">
+            <div class="profile-header">
+                <img src="profile/css/img/avt.png" alt="Avatar" class="avatar-circle">
+                <h1 class="display-name">Trọng Nghĩa</h1>
+                <p class="sub-text">Dưới đây là các thông tin mạng xã hội của Admin</p>
+            </div>
         </div>
+
+        <div class="links-container">
+            <a href="sell.html" class="btn-link btn-gradient">
+                <i class="fa-solid fa-cart-shopping" style="position: absolute; left: 20px;"></i> Trang MMO
+            </a>
+            
+            <a href="banggiadichvu.html" class="btn-link btn-gradient">
+                <i class="fa-solid fa-file-invoice-dollar" style="position: absolute; left: 20px;"></i> Bảng Giá Dịch Vụ
+            </a>
+            
+            <a href="https://www.facebook.com/share/1CZmcD4J8k/?mibextid=wwXIfr" target="_blank" class="btn-link btn-gradient">
+                <i class="fa-brands fa-facebook" style="position: absolute; left: 20px;"></i> Facebook
+            </a>
+            
+            <a href="https://locket.cam/bebo1759" target="_blank" class="btn-link btn-gradient">
+                <i class="fa-solid fa-camera" style="position: absolute; left: 20px;"></i> Locket
+            </a>
+            
+            <a href="https://www.tiktok.com/@dtn172130_?_r=1&_t=ZS-95VPz5N1frE" target="_blank" class="btn-link btn-gradient">
+                <i class="fa-brands fa-tiktok" style="position: absolute; left: 20px;"></i> TikTok
+            </a>
+            
+            <a href="https://zalo.me/0948877241" target="_blank" class="btn-link btn-gradient">
+                <i class="fa-solid fa-comment-dots" style="position: absolute; left: 20px;"></i> Zalo (Liên Hệ)
+            </a>
+        </div>
+
+        <div class="footer-credit">© 2024 DESIGN BY TRONG NGHIA</div>
     </div>
-
-
-
-
-       <div class="card card-content">
-       <div class="links-container">
-           <a href="banggiadichvu.html" class="btn-link btn-gradient">Bảng Giá</a>
-           <a href="sell.html" class="btn-link btn-gradient">Trang MMO</a>
-           <a href="https://www.facebook.com/share/1CZmcD4J8k/?mibextid=wwXIfr" class="btn-link btn-gradient">Facebook</a>
-           <a href="https://locket.cam/bebo1759" class="btn-link btn-gradient">Locket</a>
-           <a href="https://www.tiktok.com/@dtn172130_?_r=1&_t=ZS-94gY8J2mjs8" class="btn-link btn-gradient">TikTok</a>
-           <a href="kyniemcuatoi.html" class="btn-link btn-gradient">Kỷ Niệm Của Tui</a>
-           <a href="thanhtoan.html" class="btn-link btn-gradient">Trang Thanh Toán</a>
-       </div>
-   </div>
-   </div>
-        
-        
 
 </body>
 </html>

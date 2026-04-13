@@ -3,100 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bảng Giá Dịch Vụ - Tối Ưu Độ Đậm</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>Bảng Giá Dịch Vụ - Trọng Nghĩa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f0f2f5;
-            --card-bg: #ffffff;
-            --text-black: #000000;
-            --deep-blue: #000080; /* Màu xanh nước biển cực đậm (Navy) */
-            --price-red: #d63031; 
-            --cat-bg: #fab1a0;
+            --bg: #060912;
+            --card-bg: #111827;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
+            --accent: #3b82f6;
+            --border: rgba(255, 255, 255, 0.08);
+            --price-color: #4ade80;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Comfortaa', cursive;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
-            color: var(--text-black);
-            padding: 20px;
+            background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #060912 100%);
+            color: var(--text-main);
+            padding: 30px 15px;
             display: flex;
             justify-content: center;
         }
 
         .container {
             width: 100%;
-            max-width: 700px;
+            max-width: 800px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
         }
 
         header h1 {
-            color: var(--text-black);
             font-size: 2.5rem;
-            font-weight: 900;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .service-group {
             background: var(--card-bg);
-            border-radius: 25px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-radius: 24px;
             margin-bottom: 25px;
             overflow: hidden;
-            border: 2px solid #ffeaa7;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
         .group-header {
-            background: var(--cat-bg);
-            color: #000000; /* Đen đậm thật đậm */
-            padding: 15px;
-            text-align: center;
-            font-weight: 900; /* Độ đậm tối đa */
-            font-size: 1.3rem;
+            padding: 18px;
+            font-weight: 800;
+            font-size: 1.2rem;
             text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
         }
+
+        /* Màu riêng cho từng nhóm */
+        .header-web { background: linear-gradient(90deg, #f59e0b, #d97706); }
+        .header-fb { background: linear-gradient(90deg, #1877f2, #0054a6); }
+        .header-tt { background: linear-gradient(90deg, #fe2c55, #ee1d52); }
+        .header-game { background: linear-gradient(90deg, #10b981, #059669); }
+        .header-tg { background: linear-gradient(90deg, #6366f1, #4338ca); }
+        .header-ins { background: linear-gradient(90deg, #d946ef, #a21caf); }
+        .header-app { background: linear-gradient(90deg, #f43f5e, #be123c); }
 
         .item {
             display: grid;
-            grid-template-columns: 2fr 1.5fr 1fr;
-            padding: 15px;
-            border-bottom: 1px dashed #dfe6e9;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
             align-items: center;
-            font-size: 0.95rem;
+            transition: background 0.2s;
         }
 
+        .item:hover { background: rgba(255, 255, 255, 0.03); }
         .item:last-child { border-bottom: none; }
 
-        .item-name { font-weight: 700; color: var(--text-black); }
-        
+        .item-name { font-weight: 600; font-size: 1rem; }
         .item-unit { 
-            color: var(--deep-blue); /* Xanh nước biển đậm thật đậm */
+            color: var(--text-dim); 
             font-size: 0.85rem; 
-            text-align: center; 
-            font-weight: 800; /* Tăng độ đậm cho đơn vị */
+            text-align: center;
+            font-weight: 700;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 8px;
+            border-radius: 6px;
         }
-
         .item-price { 
-            color: var(--price-red);
+            color: var(--price-color); 
             font-weight: 800; 
             text-align: right;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
-        @media (max-width: 500px) {
-            .item {
-                grid-template-columns: 1fr;
-                gap: 5px;
-                text-align: center;
-            }
+        @media (max-width: 600px) {
+            .item { grid-template-columns: 1fr; text-align: center; gap: 8px; padding: 20px; }
             .item-unit, .item-price { text-align: center; }
             header h1 { font-size: 1.8rem; }
         }
@@ -110,7 +122,7 @@
     </header>
 
     <div class="service-group">
-        <div class="group-header">Phát triển Website</div>
+        <div class="group-header header-web"><i class="fas fa-code"></i> Phát triển Website</div>
         <div class="item">
             <div class="item-name">Làm Bio, Profile, in4</div>
             <div class="item-unit">Gói Vĩnh Viễn</div>
@@ -129,88 +141,53 @@
     </div>
 
     <div class="service-group">
-        <div class="group-header">Pet Simulator (Roblox)</div>
-        <div class="item">
-            <div class="item-name">Huge Nor</div>
-            <div class="item-unit">2 Pet</div>
-            <div class="item-price">1.000đ</div>
-        </div>
-        <div class="item">
-            <div class="item-name">Gems</div>
-            <div class="item-unit">10M Gems</div>
-            <div class="item-price">1.000đ</div>
-        </div>
+        <div class="group-header header-game"><i class="fas fa-gamepad"></i> Pet Simulator & Roblox</div>
+        <div class="item"><div class="item-name">Huge Nor</div><div class="item-unit">2 Pet</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Gems</div><div class="item-unit">10M Gems</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">40 robux</div><div class="item-unit">1 đơn</div><div class="item-price">18.000đ</div></div>
+        <div class="item"><div class="item-name">80 robux</div><div class="item-unit">1 đơn</div><div class="item-price">30.000đ</div></div>
+        <div class="item"><div class="item-name">1.000 robux</div><div class="item-unit">1 đơn</div><div class="item-price">320.000đ</div></div>
     </div>
 
-    <div class="service-group" style="border-color: #74b9ff;">
-        <div class="group-header" style="background: #74b9ff;">Dịch Vụ Facebook</div>
-        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Theo Dõi</div><div class="item-price">1.000đ</div></div>
-        <div class="item"><div class="item-name">View Story</div><div class="item-unit">100 view</div><div class="item-price">1.000đ</div></div>
-        <div class="item"><div class="item-name">Cảm Xúc Bài Viết</div><div class="item-unit">100 Cảm Xúc</div><div class="item-price">2.000đ</div></div>
-        <div class="item"><div class="item-name">Lên Tick Xanh Không Bảo Hành</div><div class="item-unit">Chính Chủ</div><div class="item-price">1.500.000đ</div></div>
-        <div class="item"><div class="item-name">Tick Xanh Có Bảo Hành</div><div class="item-unit">Chính Chủ</div><div class="item-price">2.200.000đ</div></div>
-        <div class="item"><div class="item-name">Mở Khoá Die 180 Day</div><div class="item-unit">Có/Không mail</div><div class="item-price">450k-750k</div></div>
-        <div class="item"><div class="item-name">Khoá tài khoản FB thường</div><div class="item-unit">15p-72h</div><div class="item-price">350.000đ</div></div>
-        <div class="item"><div class="item-name">Khoá Tài Khoản Chuyên Nghiệp</div><div class="item-unit">15p-72h</div><div class="item-price">432.000đ</div></div>
+    <div class="service-group">
+        <div class="group-header header-fb"><i class="fab fa-facebook"></i> Dịch Vụ Facebook</div>
+        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Sub</div><div class="item-price">1.000đ</div></div>
+        <div class="item"><div class="item-name">Lên Tick Xanh (No BH)</div><div class="item-unit">Chính Chủ</div><div class="item-price">1.500.000đ</div></div>
+        <div class="item"><div class="item-name">Tick Xanh (Có BH)</div><div class="item-unit">Chính Chủ</div><div class="item-price">2.200.000đ</div></div>
+        <div class="item"><div class="item-name">Mở Khoá Die 180 Day</div><div class="item-unit">Acc</div><div class="item-price">450k-750k</div></div>
         <div class="item"><div class="item-name">Khoá FanPage</div><div class="item-unit">15p-72h</div><div class="item-price">567.000đ</div></div>
     </div>
 
-    <div class="service-group" style="border-color: #a29bfe;">
-        <div class="group-header" style="background: #a29bfe;">Dịch Vụ TikTok</div>
-        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Theo Dõi</div><div class="item-price">3.000đ</div></div>
-        <div class="item"><div class="item-name">Like Bài Viết</div><div class="item-unit">200 Like</div><div class="item-price">1.000đ</div></div>
-        <div class="item"><div class="item-name">Comment Việt</div><div class="item-unit">1 commet</div><div class="item-price">500đ</div></div>
-        <div class="item"><div class="item-name">Điểm PK</div><div class="item-unit">100 Điểm PK</div><div class="item-price">2.000đ</div></div>
+    <div class="service-group">
+        <div class="group-header header-tt"><i class="fab fa-tiktok"></i> Dịch Vụ TikTok</div>
+        <div class="item"><div class="item-name">Theo Dõi TCN</div><div class="item-unit">100 Sub</div><div class="item-price">3.000đ</div></div>
         <div class="item"><div class="item-name">View Video</div><div class="item-unit">2000 View</div><div class="item-price">1.000đ</div></div>
         <div class="item"><div class="item-name">Mở khoá 13 tuổi</div><div class="item-unit">15p-72h</div><div class="item-price">300.000đ</div></div>
     </div>
 
-    <div class="service-group" style="border-color: #55efc4;">
-        <div class="group-header" style="background: #55efc4;">Giao Dịch Trung Gian</div>
+    <div class="service-group">
+        <div class="group-header header-ins"><i class="fab fa-instagram"></i> Dịch Vụ Instagram</div>
+        <div class="item"><div class="item-name">Theo Dõi Việt</div><div class="item-unit">1.000 Sub</div><div class="item-price">25.000đ</div></div>
+        <div class="item"><div class="item-name">Tim Bài Viết</div><div class="item-unit">100 Tim</div><div class="item-price">2.500đ</div></div>
+    </div>
+
+    <div class="service-group">
+        <div class="group-header header-tg"><i class="fas fa-handshake"></i> Giao Dịch Trung Gian</div>
         <div class="item"><div class="item-name">Kèo 1-49k</div><div class="item-unit">1 đơn</div><div class="item-price">1.000đ</div></div>
-        <div class="item"><div class="item-name">Kèo 50-199k</div><div class="item-unit">1 đơn</div><div class="item-price">2.000đ</div></div>
-        <div class="item"><div class="item-name">Kèo 200-499k</div><div class="item-unit">1 đơn</div><div class="item-price">5.000đ</div></div>
         <div class="item"><div class="item-name">Kèo 500k+</div><div class="item-unit">1 đơn</div><div class="item-price">1%</div></div>
     </div>
-    
-    
-    
-    
-    
-    <div class="service-group" style="border-color: #681f94;">
-        <div class="group-header" style="background: #671f70;">Dịch Vụ Istagram</div>
-        <div class="item"><div class="item-name">Theo Dõi Việt</div><div class="item-unit">1.000 Theo Dõi</div><div class="item-price">25.000đ</div></div>
-        <div class="item"><div class="item-name">Tim Bài Viết</div><div class="item-unit">100 Tim</div><div class="item-price">2.500đ</div></div>
-        <div class="item"><div class="item-name">View Bài Viết</div><div class="item-unit">1.000</div><div class="item-price">500đ</div></div>
-        
-    </div>
-    
-    
-    
-    
-    
 
-    <div class="service-group" style="border-color: #ffeaa7;">
-        <div class="group-header" style="background: #fdcb6e;">Robux (Roblox)</div>
-        <div class="item"><div class="item-name">40 robux</div><div class="item-unit">1 đơn</div><div class="item-price">18.000đ</div></div>
-        <div class="item"><div class="item-name">80 robux</div><div class="item-unit">1 đơn</div><div class="item-price">30.000đ</div></div>
-        <div class="item"><div class="item-name">500 robux</div><div class="item-unit">1 đơn</div><div class="item-price">170.000đ</div></div>
-        <div class="item"><div class="item-name">1.000 robux</div><div class="item-unit">1 đơn</div><div class="item-price">320.000đ</div></div>
-    </div>
-
-    <div class="service-group" style="border-color: #ff7675;">
-        <div class="group-header" style="background: #ff7675;">Premium App</div>
-        <div class="item"><div class="item-name">Locket Gold Android</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">10.000đ</div></div>
-        <div class="item"><div class="item-name">Locket Gold IOS</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">25.000đ</div></div>
-        <div class="item"><div class="item-name">Picsart Gold IOS</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">25.000đ</div></div>
+    <div class="service-group">
+        <div class="group-header header-app"><i class="fas fa-crown"></i> Premium App</div>
+        <div class="item"><div class="item-name">Locket Gold iOS</div><div class="item-unit">Vĩnh Viễn</div><div class="item-price">25.000đ</div></div>
         <div class="item"><div class="item-name">CapCut Pro (bảo hành)</div><div class="item-unit">1 Tháng</div><div class="item-price">45.000đ</div></div>
-        <div class="item"><div class="item-name">CapCut Pro (kbh)</div><div class="item-unit">1 Tháng</div><div class="item-price">21.000đ</div></div>
-        <div class="item"><div class="item-name">Chat GPT Plus</div><div class="item-unit">1 Tháng (bảo hành)</div><div class="item-price">100.000đ</div></div>
-        <div class="item"><div class="item-name">Chat GPT Plus</div><div class="item-unit">1 Tháng (kbh)</div><div class="item-price">50.000đ</div></div>
-        <div class="item"><div class="item-name">Canva Pro</div><div class="item-unit">1 Tháng</div><div class="item-price">20.000đ</div></div>
-        <div class="item"><div class="item-name">Canva Pro</div><div class="item-unit">6 Tháng</div><div class="item-price">60.000đ</div></div>
-        <div class="item"><div class="item-name">Gemini Pro + GG 2TB</div><div class="item-unit">1 Năm</div><div class="item-price">100.000đ</div></div>
+        <div class="item"><div class="item-name">Chat GPT Plus (kbh)</div><div class="item-unit">1 Tháng</div><div class="item-price">50.000đ</div></div>
+        <div class="item"><div class="item-name">Gemini Pro + 2TB</div><div class="item-unit">1 Năm</div><div class="item-price">100.000đ</div></div>
     </div>
+
+    <footer style="text-align: center; color: var(--text-dim); font-size: 0.8rem; margin-top: 20px;">
+        © 2024 DESIGN BY TRONG NGHIA
+    </footer>
 </div>
 
 </body>
