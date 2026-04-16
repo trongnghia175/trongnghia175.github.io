@@ -1,253 +1,151 @@
 :root {
-  --main-bg-color: #000000; /* Thay đổi từ #f0f0f0 thành màu đen hoặc đen đậm */
-  --text-color: #f0f0f0;    /* Nên đổi màu chữ cơ bản thành trắng để dễ đọc */
-  --card-bg-color: #fff; /* Giữ nguyên nền card là trắng (hoặc đen nếu muốn) */
-  --divider-color: #ccc;
-  --highlight-color: #fff; /* Đổi màu nổi bật thành trắng */
+    --bg-deep: #050505;
+    --bg-card: #0c0c0c;
+    --gold: #c9a227;
+    --red: #da2c1c;
+    --text: #ffffff;
+    --text-muted: #999999;
 }
 
-/* ... (Các CSS còn lại giữ nguyên, bao gồm cả body) ... */
+* { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
 
 body {
-  background-color: var(--main-bg-color); /* Lấy màu đen mới */
-  color: var(--text-color);               /* Lấy màu chữ trắng mới */
-  /* ... (Các thuộc tính khác) ... */
-}
-
-/* ... (Các CSS khác, bao gồm cả .contact-button đã cập nhật trước đó) ... */
-
-
-body {
-  background-color: var(--main-bg-color);
-  color: var(--text-color);
-  font-family: 'Montserrat', sans-serif;
-  text-align: center;
-  padding: 40px 20px;
-  position: relative;
-}
-
-.menu-toggle::before {
-content: "🌸"; /* Dùng icon hoa anh đào thay thế */
-font-size: 25px;
-line-height: 1;
-color: var(--text-color);
-position: absolute;
-top: 30px;
-left: 30px;
-cursor: pointer;
-z-index: 1000;
-transition: color 0.3s ease;
-}
-
-/* Đảm bảo phần tử gốc .menu-toggle không có nội dung nếu dùng ::before */
-.menu-toggle {
-    /* Xóa nội dung gốc nếu có */
-    font-size: 0; /* Hoặc ẩn text-indent */
-}
-
-.menu-toggle:hover::before {
-    color: var(--highlight-color);
-}
-
-
-.menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 150px;
-  background-color: rgba(0, 0, 0, 0.9);
-  padding-top: 60px;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-  z-index: 999;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu.active {
-  transform: translateX(0);
-}
-
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 700;
-  padding: 10px 20px;
-  transition: background-color 0.2s ease;
-  text-align: left;
-}
-
-.menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.container {
-  max-width: 420px;
-  margin: 0 auto;
-  background-image: url('bgr.png');
-  background-size: cover;
-  background-position: center;
-  background-color: var(--card-bg-color);
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  position: relative;
-}
-
-.container:hover {
-  transform: translateY(-5px);
-}
-
-.avatar-wrapper {
-  position: relative;
-  width: 130px;
-  height: 130px;
-  margin: 0 auto 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  background: linear-gradient(45deg, #000, #333, #666);
-  padding: 5px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--card-bg-color);
-  transition: transform 0.3s ease;
-}
-
-.avatar-wrapper:hover .avatar {
-  transform: scale(1.05);
-}
-
-h1 {
-  font-size: 19px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.5px;
-  margin-bottom: 5px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-.username {
-  font-size: 15px;
-  color: #00f;
-  font-weight: 400;
-  margin-bottom: 20px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
-}
-
-/* Đổi tên class 'description' thành 'custom-description' và thêm CSS theo yêu cầu */
-.custom-description {
-    font-size: 15px; /* Tăng kích thước chữ cho dễ nhìn hơn */
+    background-color: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #000000; /* Màu chữ: Trắng */
-    padding: 0 10px;
-    /* Hiệu ứng viền đen (đổ bóng chữ 1px đen 4 hướng) */
-    text-shadow: 
-        -1px -1px 0 #FFFFFF00,  /* Trên trái */
-         1px -1px 0 #00000000,  /* Trên phải */
-        -1px  1px 0 #00000000,  /* Dưới trái */
-         1px  1px 0 #00000000;  /* Dưới phải */
-    margin-bottom: 20px; /* Thêm khoảng cách dưới */
 }
 
-.divider {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  margin: 30px 0;
-  width: 80%;
-  margin: 30px auto;
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* Navbar Responsive */
+.navbar {
+    height: 80px;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+    position: sticky; top: 0; z-index: 1000;
 }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px; 
+.nav-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.logo .edition { color: var(--gold); font-family: 'Playfair Display', serif; margin-left: 4px; }
+
+.balance-box {
+    background: #000;
+    padding: 8px 15px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    display: flex; align-items: center; gap: 10px;
 }
 
-/* ... (Giữ nguyên các CSS ở trên) ... */
+.balance-info { display: flex; flex-direction: column; }
+.balance-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+.balance-amount-wrapper { font-weight: 800; color: var(--gold); font-size: 1rem; }
 
-/* Thêm hiệu ứng hoạt hình chuyển màu cho viền */
-@keyframes rainbow-border {
-    0% { border-color: #ff0000; } /* Đỏ */
-    14% { border-color: #ff7f00; } /* Cam */
-    28% { border-color: #ffff00; } /* Vàng */
-    42% { border-color: #00ff00; } /* Xanh lá */
-    57% { border-color: #0000ff; } /* Xanh dương */
-    71% { border-color: #4b0082; } /* Chàm */
-    85% { border-color: #9400d3; } /* Tím */
-    100% { border-color: #ff0000; } /* Quay lại Đỏ */
+/* Hero Section - Tự co font chữ */
+.hero-section { text-align: center; padding: clamp(40px, 10vh, 100px) 0; }
+.hero-section h1 { 
+    font-size: clamp(2rem, 8vw, 4rem); 
+    font-family: 'Playfair Display', serif; 
+    margin-bottom: 15px;
+}
+.hero-section p { font-size: clamp(0.9rem, 3vw, 1.1rem); color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+/* Recharge Card - Responsive Input */
+.recharge-wrapper { margin-bottom: 60px; }
+.recharge-card {
+    background: var(--bg-card);
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 8px;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    text-align: center;
 }
 
-
-.contact-button {
-  width: 90%; 
-  max-width: 300px;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  color: #fff;
-  /* BỎ viền cũ, thêm animation cho viền */
-  border: 2px solid transparent; 
-  background-color: rgba(0, 0, 0, 0.6); /* Tăng độ đậm nền nút để làm nổi viền */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  
-  /* ÁP DỤNG HIỆU ỨNG 7 MÀU */
-  animation: rainbow-border 5s linear infinite; /* 5s, lặp lại vô tận */
+.input-group { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; /* Tự nhảy dòng trên màn hình rất nhỏ */
+    justify-content: center;
 }
 
-.contact-button:hover {
-  transform: translateY(-3px);
-  background-color: rgba(0, 0, 0, 0.8);
-  /* Thêm hiệu ứng đổ bóng màu trắng sáng khi di chuột */
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); 
-  /* Bỏ border-color: #fff; vì đã dùng animation */
+input[type="text"] {
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px;
+    color: #fff;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 200px;
 }
 
-/* --- CSS CHO MÃ QR CÓ VIỀN CẦU VỒNG --- */
-
-.qr-wrapper {
-    margin: 25px auto 10px auto; 
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    width: fit-content; 
-    box-shadow: 0 5px 15px rgba(54, 143, 120, 0.62);
-    
-    /* CẬP NHẬT ĐỂ CÓ VIỀN CẦU VỒNG */
-    border: 2px solid transparent; /* Thay thế border cũ */
-    animation: rainbow-border 5s linear infinite; /* Áp dụng animation từ các nút */
+.btn-activate {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 15px 25px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
 }
 
-.qr-code-img {
-    width: 150px;
-    height: 150px;
-    display: block;
-    margin: 0 auto;
-    border-radius: 5px;
-    /* Thêm một chút bóng mờ để QR nổi bật hơn trên nền trắng */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); 
+/* Product Grid - Tự động chia cột theo màn hình */
+.product-grid {
+    display: grid;
+    /* Tự động tính toán số cột: tối thiểu 300px mỗi cột */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
-.qr-text {
-    font-size: 11px;
+.product-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-content { padding: 30px; }
+
+.category-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.card-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.price { font-size: 1.5rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+
+.btn-purchase {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 20px;
+    cursor: pointer;
     font-weight: 700;
-    margin-top: 5px;
-    color: #333; 
 }
 
+.btn-purchase:hover { background: var(--gold); color: #000; }
+
+/* Responsive cho Mobile */
+@media (max-width: 600px) {
+    .nav-container { flex-direction: row; }
+    .logo { font-size: 1.2rem; }
+    .balance-box { padding: 5px 10px; }
+    .btn-text { display: none; } /* Ẩn chữ trên nút nạp để tiết kiệm không gian */
+    .btn-activate { padding: 15px; }
+}
