@@ -1,0 +1,151 @@
+:root {
+    --bg-deep: #050505;
+    --bg-card: #0c0c0c;
+    --gold: #c9a227;
+    --red: #da2c1c;
+    --text: #ffffff;
+    --text-muted: #999999;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; transition: all 0.3s ease; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+
+/* Navbar Responsive */
+.navbar {
+    height: 80px;
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.nav-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+
+.logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+.logo .edition { color: var(--gold); font-family: 'Playfair Display', serif; margin-left: 4px; }
+
+.balance-box {
+    background: #000;
+    padding: 8px 15px;
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.balance-info { display: flex; flex-direction: column; }
+.balance-label { font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; }
+.balance-amount-wrapper { font-weight: 800; color: var(--gold); font-size: 1rem; }
+
+/* Hero Section - Tự co font chữ */
+.hero-section { text-align: center; padding: clamp(40px, 10vh, 100px) 0; }
+.hero-section h1 { 
+    font-size: clamp(2rem, 8vw, 4rem); 
+    font-family: 'Playfair Display', serif; 
+    margin-bottom: 15px;
+}
+.hero-section p { font-size: clamp(0.9rem, 3vw, 1.1rem); color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+/* Recharge Card - Responsive Input */
+.recharge-wrapper { margin-bottom: 60px; }
+.recharge-card {
+    background: var(--bg-card);
+    padding: clamp(20px, 5vw, 40px);
+    border-radius: 8px;
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    text-align: center;
+}
+
+.input-group { 
+    display: flex; 
+    gap: 10px; 
+    flex-wrap: wrap; /* Tự nhảy dòng trên màn hình rất nhỏ */
+    justify-content: center;
+}
+
+input[type="text"] {
+    background: #000;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 15px;
+    color: #fff;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.btn-activate {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 15px 25px;
+    font-weight: 800;
+    cursor: pointer;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Product Grid - Tự động chia cột theo màn hình */
+.product-grid {
+    display: grid;
+    /* Tự động tính toán số cột: tối thiểu 300px mỗi cột */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-content { padding: 30px; }
+
+.category-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.card-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.price { font-size: 1.5rem; font-weight: 800; font-family: 'Playfair Display', serif; }
+
+.btn-purchase {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 20px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.btn-purchase:hover { background: var(--gold); color: #000; }
+
+/* Responsive cho Mobile */
+@media (max-width: 600px) {
+    .nav-container { flex-direction: row; }
+    .logo { font-size: 1.2rem; }
+    .balance-box { padding: 5px 10px; }
+    .btn-text { display: none; } /* Ẩn chữ trên nút nạp để tiết kiệm không gian */
+    .btn-activate { padding: 15px; }
+}
