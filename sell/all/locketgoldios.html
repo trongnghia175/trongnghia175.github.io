@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #eef2f3;
+            background: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,94 +17,110 @@
 
         .download-card {
             background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             text-align: center;
             max-width: 380px;
             width: 90%;
-            border: 1px solid #ddd;
+            border: 1px solid #ffffff;
         }
 
-        /* Icon Shadowrocket giả lập */
-        .app-icon {
-            width: 80px;
-            height: 80px;
-            background: #3498db;
-            border-radius: 18px;
-            margin: 0 auto 20px;
+        .icon-box {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 22px;
+            margin: 0 auto 25px;
             display: flex;
             justify-content: center;
             align-items: center;
             color: white;
-            font-size: 40px;
-            box-shadow: 0 8px 15px rgba(52, 152, 219, 0.3);
+            font-size: 45px;
+            box-shadow: 0 10px 20px rgba(37, 117, 252, 0.3);
         }
 
         .file-name {
             font-size: 22px;
-            color: #2c3e50;
-            margin: 0 0 8px 0;
+            color: #1a1a1a;
+            margin: 0 0 5px 0;
             font-weight: 700;
         }
 
+        .author-name {
+            color: #2575fc;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+            font-size: 15px;
+        }
+
         .file-info {
-            color: #bdc3c7;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 12px;
+            color: #6c757d;
             font-size: 13px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-bottom: 30px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .btn-download {
             display: block;
-            background: linear-gradient(135deg, #3498db, #2980b9);
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
             color: white;
-            padding: 16px;
+            padding: 18px;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 15px;
             font-weight: bold;
             font-size: 16px;
             transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(106, 17, 203, 0.2);
         }
 
         .btn-download:hover {
-            background: linear-gradient(135deg, #2980b9, #2c3e50);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(106, 17, 203, 0.3);
+            filter: brightness(1.1);
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 20px;
-            color: #7f8c8d;
+            margin-top: 25px;
+            color: #adb5bd;
             text-decoration: none;
             font-size: 14px;
-            transition: 0.2s;
+            transition: 0.3s;
         }
 
         .back-link:hover {
-            color: #3498db;
+            color: #2575fc;
         }
     </style>
 </head>
 <body>
 
     <div class="download-card">
-        <div class="app-icon">🚀</div>
+        <div class="icon-box">📦</div>
         
-        <h1 class="file-name">Config Shadowrocket Locket Gold - IOS</h1>
-        <p style="margin-top: -5px; color: #3498db; font-weight: 500;">By Dam Trong Nghia</p>
+        <h1 class="file-name">Config Locket Gold</h1>
+        <span class="author-name">By: Đàm Trọng Nghĩa</span>
         
         <div class="file-info">
-            File: .conf | Size: 3 KB
+            📦 Định dạng: <b>ZIP</b> | ⚖️ Dung lượng: <b>3 KB</b>
         </div>
 
-        <a href="sell/all/file/locketv17.conf" download="🌚LocketV17_TNghia1759.conf" class="btn-download">
-            TẢI FILE CONFIG (.CONF)
+        <a href="sell/all/file/LocketV17_TNghia1759.zip" download="LocketV17_TNghia1759.zip" class="btn-download">
+            TẢI XUỐNG FILE (.ZIP)
         </a>
 
-        <a href="index.html" class="back-link"> Quay về trang chủ</a>
+        <p style="font-size: 12px; color: #ff4757; margin-top: 15px;">
+            * Giải nén để lấy file .conf sau khi tải
+        </p>
+
+        <a href="index.html" class="back-link">← Quay về trang chủ</a>
     </div>
 
 </body>
