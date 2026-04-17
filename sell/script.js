@@ -26,13 +26,23 @@ function handleRecharge() {
 
 function buyProduct(price, link) {
     if (balance >= price) {
-        if(confirm("Xác nhận mua hàng?")) {
+        if(confirm("Xác nhận dùng " + price.toLocaleString('vi-VN') + "đ để tải tệp này?")) {
+            // 1. Trừ tiền và cập nhật giao diện
             balance -= price;
             updateUI();
-            alert("Thành công! Đang chuyển hướng...");
-            window.location.href = link;
+            
+            // 2. Tạo lệnh tải tệp ngầm
+            const downloadLink = document.createElement('a');
+            downloadLink.href = link;
+            downloadLink.download = link.split('/').pop(); // Lấy tên file gốc
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            alert("Thanh toán thành công! Tệp đang được tải xuống.");
         }
     } else {
         alert("Số dư không đủ. Vui lòng liên hệ Admin Bo để nhận code!");
     }
 }
+
