@@ -1,4 +1,4 @@
-const CODES = { "BO2026": 500000, "GOLD88": 100000, "VIP999": 1000000 };
+const CODES = { "user09": 500000, "user21": 100000, "user11": 1000000 };
 
 let balance = parseInt(localStorage.getItem('nt_responsive_balance')) || 0;
 updateUI();
@@ -60,6 +60,6 @@ async function buyProduct(price, link) {
             }
         }
     } else {
-        alert("Số dư không đủ. Vui lòng liên hệ Admin Bo để nhận code!");
+        alert("Số dư không đủ. Vui lòng liên hệ Admin để nhận code!");
     }
 }
