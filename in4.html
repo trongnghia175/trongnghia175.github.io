@@ -3,184 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông Tin Trọng Nghĩa</title>
+    <title>Profile - Giới Thiệu Bản Thân</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* CSS NÂNG CẤP - PHONG CÁCH HIỆN ĐẠI */
-        :root {
-            --bg-color: #05070a;
-            --accent-blue: #00d2ff;
-            --accent-purple: #9d50bb;
-            --card-bg: rgba(22, 31, 50, 0.8);
-            --text-color: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(0, 210, 255, 0.15) 0, transparent 50%), 
-                radial-gradient(at 100% 100%, rgba(157, 80, 187, 0.15) 0, transparent 50%);
-            color: var(--text-color);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Card Avatar & Tên */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            padding: 40px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::after {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-            z-index: -1;
-            filter: blur(10px);
-            opacity: 0.3;
-        }
-
-        .avatar-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid var(--accent-blue);
-            padding: 5px;
-            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-        }
-
-        .avatar-circle:hover {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        .display-name {
-            font-size: 28px;
-            font-weight: 800;
-            margin: 10px 0;
-            background: linear-gradient(to right, #00d2ff, #9d50bb);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .sub-text {
-            color: #94a3b8;
-            font-size: 15px;
-            margin-bottom: 0;
-        }
-
-        /* Danh sách Link */
-        .links-container {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-        }
-
-        .btn-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            border-radius: 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(30, 41, 59, 0.5);
-            position: relative;
-        }
-
-        /* Hiệu ứng Gradient đặc biệt cho từng nút */
-        .btn-gradient {
-            background: rgba(255, 255, 255, 0.05);
-            overflow: hidden;
-        }
-
-        .btn-gradient:hover {
-            background: linear-gradient(90deg, #00d2ff 0%, #3b82f6 100%);
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        /* Footer chữ nhỏ */
-        .footer-credit {
-            font-size: 11px;
-            color: #4b5563;
-            text-align: center;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="in4/style.css">
 </head>
 <body>
 
-    <div class="container">
-        <div class="card">
-            <div class="profile-header">
-                <img src="profile/css/img/avt.png" alt="Avatar" class="avatar-circle">
-                <h1 class="display-name">Trọng Nghĩa</h1>
-                <p class="sub-text">Dưới đây là các thông tin mạng xã hội của Admin</p>
+   <br><br>
+
+        <div class="card card-right">
+            <div class="section-title">Thông Tin Mạng Xã Hội</div>
+            <div class="grid-links">
+                <a href="https://www.facebook.com/share/1LnbUg9WfT/?mibextid=wwXIfr" class="link-item"><i class="fab fa-facebook"></i> Facebook</a>
+                <a href="https://www.instagram.com/damtrongnghia2109?igsh=MTZ2cWRkYW1oZGRxMQ%3D%3D&utm_source=qr" class="link-item"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://www.tiktok.com/@xl.tcl.ti.a?_r=1&_t=ZS-95v7lsXRlVQ" class="link-item"><i class="fab fa-tiktok"></i> Tiktok</a>
+                <a href="https://locket.cam/bebo1759" class="link-item"><i class="fas fa-file-alt"></i>Locket</a>
+                
+                
+            
+                
+                
+                
+                <a href="https://zalo.me/0948877241" class="link-item" id="copyPhone"><i class="fas fa-phone-alt"></i>Zalo</a>
+                 <a href="https://t.me/nghia1759" class="link-item"><i class="fas fa-file-alt"></i>Telegram</a>
+            </div>
+
+            <div class="section-title" style="margin-top: 20px;">Tài Nguyên & Khác</div>
+            <div class="grid-links">
+                <a href="sell.html" class="link-item"><i class="fas fa-file-alt"></i> Trang MMO</a>
+                <a href="banggiadichvu.html" class="link-item"><i class="fas fa-file-alt"></i> Bảng Giá</a>
+              <a href="thanhtoan.html" class="link-item"><i class="fas fa-file-alt"></i>QR Thanh Toán</a>
+            </div>
+
+            
             </div>
         </div>
+    </div><br><br>
 
-        <div class="links-container">
-            <a href="sell.html" class="btn-link btn-gradient">
-                <i class="fa-solid fa-cart-shopping" style="position: absolute; left: 20px;"></i> Trang MMO
-            </a>
-            
-            <a href="banggiadichvu.html" class="btn-link btn-gradient">
-                <i class="fa-solid fa-file-invoice-dollar" style="position: absolute; left: 20px;"></i> Bảng Giá Dịch Vụ
-            </a>
-            
-            <a href="https://www.facebook.com/share/1CcdFS1vKD/?mibextid=wwXIfr" target="_blank" class="btn-link btn-gradient">
-                <i class="fa-brands fa-facebook" style="position: absolute; left: 20px;"></i> Facebook
-            </a>
-            
-            <a href="https://locket.cam/bebo1759" target="_blank" class="btn-link btn-gradient">
-                <i class="fa-solid fa-camera" style="position: absolute; left: 20px;"></i> Locket
-            </a>
-            
-            <a href="https://www.tiktok.com/@dtn172130_?_r=1&_t=ZS-95VPz5N1frE" target="_blank" class="btn-link btn-gradient">
-                <i class="fa-brands fa-tiktok" style="position: absolute; left: 20px;"></i> TikTok
-            </a>
-             
-            <a href="https://www.instagram.com/damtrongnghia2109?igsh=MTZ2cWRkYW1oZGRxMQ%3D%3D&utm_source=qr" target="_blank" class="btn-link btn-gradient">
-                <i class="fa-solid fa-comment-dots" style="position: absolute; left: 20px;"></i> instagram
-            </a>
-            <a href="https://zalo.me/0948877241" target="_blank" class="btn-link btn-gradient">
-                <i class="fa-solid fa-comment-dots" style="position: absolute; left: 20px;"></i> Zalo (Liên Hệ)
-            </a>
-        </div>
-
-        <div class="footer-credit">© 2024 DESIGN BY TRONG NGHIA</div>
-    </div>
-
+    <script src="in4/script.js"></script>
 </body>
 </html>
