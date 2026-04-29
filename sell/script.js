@@ -89,3 +89,50 @@ async function buyProduct(price, link) {
         alert("Số dư không đủ. Vui lòng liên hệ Admin để nhận code!");
     }
 }
+async function buyProduct(price, link) {
+    if (balance >= price) {
+        if (confirm("Xác nhận thanh toán " + price.toLocaleString('vi-VN') + "đ?")) {
+            
+            // Danh sách các đuôi file muốn tải trực tiếp
+            const fileExtensions = ['.apk', '.conf', '.zip', '.rar', '.txt', '.pdf'];
+            const isDirectFile = fileExtensions.some(ext => link.toLowerCase().endsWith(ext));
+
+            if (isDirectFile) {
+                // TRƯỜNG HỢP 1: TẢI FILE TRỰC TIẾP
+                try {
+                    const response = await fetch(link);
+                    if (!response.ok) throw new Error("Không tìm thấy file");
+                    
+                    const blob = await response.blob();
+                    
+                    // Trừ tiền sau khi xác nhận file có tồn tại
+                    balance -= price;
+                    updateUI();
+
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = blobUrl;
+                    downloadLink.download = link.split('/').pop();
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);
+                    window.URL.revokeObjectURL(blobUrl);
+
+                    alert("Thanh toán thành công! Đang tải file...");
+                } catch (error) {
+                    alert("Lỗi: File không tồn tại hoặc lỗi đường dẫn!");
+                    console.error(error);
+                }
+            } else {
+                // TRƯỜNG HỢP 2: DẪN ĐẾN LINK NGOÀI (Google Drive, v.v.)
+                balance -= price;
+                updateUI();
+                
+                alert("Thanh toán thành công! Đang chuyển hướng đến liên kết...");
+                window.open(link, '_blank');
+            }
+        }
+    } else {
+        alert("Số dư không đủ. Vui lòng liên hệ Admin để nhận mã!");
+    }
+}
