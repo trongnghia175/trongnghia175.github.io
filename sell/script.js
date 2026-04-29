@@ -55,19 +55,27 @@ async function buyProduct(price, link) {
     if (balance >= price) {
         if (confirm("Xác nhận thanh toán " + price.toLocaleString('vi-VN') + "đ?")) {
             
-            // Danh sách các đuôi file muốn tải trực tiếp
-            const fileExtensions = ['.apk', '.conf', '.zip', '.rar', '.txt', '.pdf'];
-            const isDirectFile = fileExtensions.some(ext => link.toLowerCase().endsWith(ext));
+            // 1. Kiểm tra xem đây là link web hay file nội bộ
+            // Nếu link bắt đầu bằng http hoặc drive.google, ta coi là link ngoài
+            const isExternalLink = link.startsWith('http://') || 
+                                   link.startsWith('https://') || 
+                                   link.includes('drive.google.com');
 
-            if (isDirectFile) {
-                // TRƯỜNG HỢP 1: TẢI FILE TRỰC TIẾP
+            if (isExternalLink) {
+                // --- TRƯỜNG HỢP LINK NGOÀI (Drive, Web...) ---
+                balance -= price;
+                updateUI();
+                
+                alert("Thanh toán thành công! Hệ thống sẽ chuyển bạn đến liên kết tài nguyên.");
+                window.open(link, '_blank'); // Mở link trong tab mới
+            } else {
+                // --- TRƯỜNG HỢP FILE NỘI BỘ (sell/file/...) ---
                 try {
                     const response = await fetch(link);
-                    if (!response.ok) throw new Error("Không tìm thấy file");
+                    if (!response.ok) throw new Error("Không tìm thấy file trên server");
                     
                     const blob = await response.blob();
                     
-                    // Trừ tiền sau khi xác nhận file có tồn tại
                     balance -= price;
                     updateUI();
 
@@ -80,18 +88,11 @@ async function buyProduct(price, link) {
                     document.body.removeChild(downloadLink);
                     window.URL.revokeObjectURL(blobUrl);
 
-                    alert("Thanh toán thành công! Đang tải file...");
+                    alert("Thanh toán thành công! Tệp đang được tải xuống.");
                 } catch (error) {
-                    alert("Lỗi: File không tồn tại hoặc lỗi đường dẫn!");
+                    alert("Lỗi: Không thể tải file trực tiếp. Vui lòng kiểm tra lại đường dẫn nội bộ!");
                     console.error(error);
                 }
-            } else {
-                // TRƯỜNG HỢP 2: DẪN ĐẾN LINK NGOÀI (Google Drive, v.v.)
-                balance -= price;
-                updateUI();
-                
-                alert("Thanh toán thành công! Đang chuyển hướng đến liên kết...");
-                window.open(link, '_blank');
             }
         }
     } else {
