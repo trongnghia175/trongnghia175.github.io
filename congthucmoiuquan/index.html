@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công Thức Mỡ Iu Quán</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #fcf9f2;
+            --primary-color: #8c6239;
+            --accent-color: #bfa38a;
+            --text-color: #5c4033;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10px;
+            border-bottom: 1px dashed var(--accent-color);
+            margin-bottom: 40px;
+        }
+        .logo { font-family: 'Comfortaa', cursive; font-size: 1.6rem; font-weight: bold; color: var(--primary-color); }
+        .search-container {
+            display: flex;
+            align-items: center;
+            background: rgba(140, 98, 57, 0.05);
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--accent-color);
+        }
+        .search-box {
+            width: 200px;
+            padding: 4px 5px;
+            border: none;
+            background: transparent;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            outline: none;
+        }
+        .search-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--primary-color); margin-left: 5px; }
+        .gallery { width: 100%; max-width: 1000px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; justify-content: center; }
+        .photo-card { background: #ffffff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(140, 98, 57, 0.05); display: flex; flex-direction: column; align-items: center; }
+        .photo-card img { width: 100%; height: auto; object-fit: contain; border-radius: 8px; background-color: #fafafa; }
+        .photo-name { margin-top: 15px; font-weight: 600; font-size: 1.1rem; color: var(--primary-color); text-align: center; }
+        .no-result { grid-column: 1 / -1; text-align: center; font-style: italic; color: var(--accent-color); margin-top: 5px; display: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Mỡ Iu Quán</div>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-box" placeholder="Tìm công thức...">
+            <button id="searchBtn" class="search-btn">🔍</button>
+        </div>
+    </header>
+
+    <main class="gallery">
+        <div class="photo-card" data-name="Trà sữa chân trâu đường đen">
+            <img src="anhcongthuc/muc1/tra-sua-tran-chau-duong-den.png" alt="Trà sữa chân trâu đường đen" onerror="this.onerror=null; this.src='https://placehold.co/400?text=Trà+sữa+trân+châu';">
+            <div class="photo-name">Trà sữa trân châu đường đen</div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        <div class="photo-card" data-name="bò húc lắc">
+      <img src="anhcongthuc/muc1/bo-huc-lac.png" alt="bò húc lắc" onerror="this.onerror=null; this.src='https://placehold.co/400?text=bò+húc+lắc';">
+      <div class="photo-name">Bò húc lắc</div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="photo-card" data-name="milo dầm">
+      <img src="anhcongthuc/muc1/milo-dam.png" alt="milo dầm" onerror="this.onerror=null; this.src='https://placehold.co/400?text=milo+dầm';">
+      <div class="photo-name">Milo Dầm</div>
+  </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        <p class="no-result" id="noResult">Hôm nay quán không tìm thấy ảnh này rồi... ☕</p>
+    </main>
+
+    <script>
+        const searchBtn = document.getElementById('searchBtn');
+        const searchInput = document.getElementById('searchInput');
+        const photoCards = document.querySelectorAll('.photo-card');
+        const noResult = document.getElementById('noResult');
+
+        function removeVietnameseTones(str) {
+            str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+            str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+            str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+            str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+            str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+            str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+            str = str.replace(/đ/g, "d");
+            str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+            str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+            str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+            str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+            str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+            str = str.replace(/Ỳ|Ý|Y|Ỷ|Ỹ/g, "Y");
+            str = str.replace(/Đ/g, "D");
+            return str.toLowerCase().trim();
+        }
+
+        function performSearch() {
+            const keyword = removeVietnameseTones(searchInput.value);
+            let hasMatch = false;
+
+            photoCards.forEach(card => {
+                const photoName = removeVietnameseTones(card.getAttribute('data-name') || "");
+                
+                if (keyword === "" || photoName.includes(keyword)) {
+                    card.style.display = "flex";
+                    hasMatch = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            noResult.style.display = hasMatch ? "none" : "block";
+        }
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') performSearch(); });
+        searchInput.addEventListener('input', () => { if (searchInput.value.trim() === "") performSearch(); });
+    </script>
+</body>
+</html>
