@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Dịch Vụ Mobile - iPhone XR</title>
+    <!-- FontAwesome & Google Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Khung mô phỏng / Khung hiển thị chuẩn iPhone XR */
+        .app-container {
+            width: 100%;
+            max-width: 414px; /* Độ rộng iPhone XR */
+            height: 100vh;
+            max-height: 896px; /* Chiều cao iPhone XR */
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* Thanh Tab cuộn ngang chọn Nền tảng */
+        .tabs-header {
+            display: flex;
+            background: #1e293b;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 10px 5px;
+            gap: 6px;
+        }
+
+        .tabs-header::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn */
+        }
+
+        .tab-btn {
+            flex: 0 0 auto;
+            padding: 8px 12px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn.active {
+            background: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Nội dung chính */
+        .tab-content-wrapper {
+            flex: 1;
+            padding: 12px;
+            overflow-y: auto;
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Tựa đề Section */
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 10px 0 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Danh sách dạng Lưới 2 cột cho tiết kiệm không gian */
+        .grid-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .item-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            border-left: 3px solid #3b82f6;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .item-card:active {
+            background: #e2e8f0;
+        }
+
+        .item-card-danger {
+            border-left-color: #ef4444;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- Thanh Tab điều hướng phía trên -->
+        <div class="tabs-header">
+            <button class="tab-btn active" onclick="openTab(event, 'tiktok')">
+                <i class="fa-brands fa-tiktok" style="color: #fff;"></i> TikTok
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'facebook')">
+                <i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Facebook
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'instagram')">
+                <i class="fa-brands fa-instagram" style="color: #e4405f;"></i> Instagram
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'youtube')">
+                <i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'telegram')">
+                <i class="fa-brands fa-telegram" style="color: #0088cc;"></i> Telegram
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'apps')">
+                <i class="fa-solid fa-mobile-screen"></i> App & Web
+            </button>
+            <button class="tab-btn" onclick="openTab(event, 'game')">
+                <i class="fa-solid fa-gamepad"></i> Nạp Game & Unlock
+            </button>
+        </div>
+
+        <!-- Vùng hiển thị Nội dung Tab -->
+        <div class="tab-content-wrapper">
+            
+            <!-- Tab TikTok -->
+            <div id="tiktok" class="tab-panel active">
+                <div class="section-title"><i class="fa-brands fa-tiktok"></i> Dịch Vụ TikTok</div>
+                <div class="grid-list">
+                    <div class="item-card">Tăng Theo Dõi</div>
+                    <div class="item-card">Tăng Tim Tây</div>
+                    <div class="item-card">Tăng Tim Việt 🇻🇳</div>
+                    <div class="item-card">Tăng View Video</div>
+                    <div class="item-card">Tăng Bình Luận</div>
+                    <div class="item-card">Tăng Yêu Thích</div>
+                    <div class="item-card">Tăng Chia Sẻ</div>
+                    <div class="item-card">Tăng Điểm PK</div>
+                    <div class="item-card">Tăng Tim Live</div>
+                    <div class="item-card">Tăng View Live</div>
+                    <div class="item-card">Tăng View Story</div>
+                </div>
+            </div>
+
+            <!-- Tab Facebook -->
+            <div id="facebook" class="tab-panel">
+                <div class="section-title"><i class="fa-brands fa-facebook" style="color: #1877f2;"></i> Dịch Vụ Facebook</div>
+                <div class="grid-list">
+                    <div class="item-card">Tăng Theo Dõi</div>
+                    <div class="item-card">Like Bài Việt 🇻🇳</div>
+                    <div class="item-card">Like Bài Tây</div>
+                    <div class="item-card">Thành Viên Nhóm</div>
+                    <div class="item-card">Tăng Bình Luận</div>
+                    <div class="item-card">Like/Follow Page</div>
+                    <div class="item-card">Tăng Chia Sẻ</div>
+                    <div class="item-card">Tăng View Video</div>
+                    <div class="item-card">Tăng View Story</div>
+                    <div class="item-card">Like Bình Luận</div>
+                    <div class="item-card">Tăng Đánh Giá Page</div>
+                </div>
+            </div>
+
+            <!-- Tab Instagram -->
+            <div id="instagram" class="tab-panel">
+                <div class="section-title"><i class="fa-brands fa-instagram" style="color: #e4405f;"></i> Dịch Vụ Instagram</div>
+                <div class="grid-list">
+                    <div class="item-card">Tăng Theo Dõi</div>
+                    <div class="item-card">Tăng Tim</div>
+                    <div class="item-card">Tăng View</div>
+                </div>
+            </div>
+
+            <!-- Tab YouTube -->
+            <div id="youtube" class="tab-panel">
+                <div class="section-title"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> Dịch Vụ YouTube</div>
+                <div class="grid-list">
+                    <div class="item-card">Tăng Subscribers</div>
+                    <div class="item-card">Tăng Like</div>
+                    <div class="item-card">Tăng View</div>
+                    <div class="item-card">Tăng Comment</div>
+                </div>
+            </div>
+
+            <!-- Tab Telegram -->
+            <div id="telegram" class="tab-panel">
+                <div class="section-title"><i class="fa-brands fa-telegram" style="color: #0088cc;"></i> Dịch Vụ Telegram</div>
+                <div class="grid-list">
+                    <div class="item-card">Tăng TV Nhóm</div>
+                    <div class="item-card">Tăng Cảm Xúc</div>
+                </div>
+            </div>
+
+            <!-- Tab App & Web -->
+            <div id="apps" class="tab-panel">
+                <div class="section-title"><i class="fa-solid fa-border-all"></i> Tài Khoản App & Web</div>
+                <div class="grid-list">
+                    <div class="item-card">Locket Gold iOS</div>
+                    <div class="item-card">Picsart Pro iOS</div>
+                    <div class="item-card">SoundCloud Go+</div>
+                    <div class="item-card">CapCut Pro</div>
+                    <div class="item-card">Locket Gold Android</div>
+
+                    <div class="section-title" style="grid-column: span 2;"><i class="fa-solid fa-globe"></i> Thiết Kế Website</div>
+                    <div class="item-card">Web Bio / Info</div>
+                    <div class="item-card">Web Bán Hàng</div>
+                    <div class="item-card">Web Trò Chơi</div>
+                    <div class="item-card">Web Kỷ Niệm</div>
+                    <div class="item-card">Web Tỏ Tình</div>
+                </div>
+            </div>
+
+            <!-- Tab Nạp Game & Unlock -->
+            <div id="game" class="tab-panel">
+                <div class="section-title"><i class="fa-solid fa-coins"></i> Nạp Game & Đổi Thẻ</div>
+                <div class="grid-list">
+                    <div class="item-card">Nạp Xu TikTok</div>
+                    <div class="item-card">KC FreeFire</div>
+                    <div class="item-card">QH Liên Quân</div>
+                    <div class="item-card">Robux Roblox</div>
+                    <div class="item-card">Đổi Card ➔ Tiền TK</div>
+
+                    <div class="section-title" style="grid-column: span 2;"><i class="fa-solid fa-user-slash"></i> Dịch Vụ Mở Khóa / Band</div>
+                    <div class="item-card item-card-danger">Mở TikTok Band</div>
+                    <div class="item-card item-card-danger">Mở TikTok < 18t</div>
+                    <div class="item-card item-card-danger">Unban Facebook</div>
+                    <div class="item-card item-card-danger">Band Facebook</div>
+                    <div class="item-card item-card-danger">Band TikTok</div>
+                    <div class="item-card item-card-danger">Band Instagram</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Ẩn tất cả các tab content
+            tabcontent = document.getElementsByClassName("tab-panel");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Bỏ class active ở tất cả các nút
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            // Hiển thị tab được chọn
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
